@@ -1,0 +1,12 @@
+<div>
+        {%for i in room %}
+        <div class="container">
+            <span><a href = "/profile/{{i.host.id}}">@{{i.host.username}}</a></span>
+            <h4>{{i.id}} -- <small><a href='/room/{{i.id}}'>{{i.name}}</a></small></h4>
+            <p><small>{{i.topic.name}}</small></p>
+            <button class="btn btn-dark"><a href="{% url 'updateRoom' i.id %}">Update</a></button>
+            <button class="btn btn-dark"><a href="{% url 'deleteRoom' i.id %}">delete</a></button>
+            <hr>
+        </div>
+        {% endfor %}
+</div>

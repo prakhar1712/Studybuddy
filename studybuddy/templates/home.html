@@ -1,0 +1,45 @@
+{ {% extends 'main.html' %}}
+
+{% block title%}
+Home Page
+{% endblock title%}
+
+{% block content%}
+<style>
+    .gridall {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+
+    .gridsearch {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+</style>
+<div class="input-group container" style="padding: 20px 10px 10px 10px;">
+    <form method="get" action="{% url 'home' %}">
+        <div class="container gridsearch">
+            <input type="search" class="form-control rounded" style="width: 970px;" placeholder="Search"
+                aria-label="Search" aria-describedby="search-addon" name="q" />
+            <button type="submit" class="btn btn-dark">search</button>
+        </div>
+    </form>
+</div>
+
+
+<div class="gridall">
+    <div class="container" style="padding: 10px;">
+        {% include 'topics.html'%}
+    </div>
+
+
+    <div class="container">
+        <h5 style="padding: 10px 0px 10px 0px;"><small>rooms available = </small> {{room_count}}</h5>
+        <button class="btn btn-dark" style="margin: 10px 0px 10px 0px;"><a href="createRoom">Create Room</a></button>
+        {%include 'feed.html'%}
+    </div>
+    <div class="container" style="padding: 10px;">
+        {% include 'activity.html' %}
+    </div>
+</div>
+{% endblock content %}

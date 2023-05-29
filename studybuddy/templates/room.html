@@ -1,0 +1,55 @@
+{ {% extends 'main.html' %}}
+
+{% block title%}
+Room Page
+
+{% endblock title%}
+
+{% block content%}
+<style>
+    .gridall {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+
+    .gridsearch {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+</style>
+<h4 style="text-align: center;">{{room.name}} </h4>
+<div class="  griall" style="display: grid; grid-template-columns: 3fr 1fr;">
+    <div class="container">
+        {% for i in message_all %}
+        <div class="container" style=" background-color: #9090cf;border-radius: 13px; margin-top: 10px;">
+            <h4><a href="/profile/{{i.user.id}}">@{{i.user}}</a></h4>
+            <h5> {{i.body}} </h5>
+            <small>{{i.created|timesince}} ago</small>
+            <hr>
+        </div>
+        {%endfor%}
+        <div class="container">
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="input-group container">
+                    <input type="search" class="form-control rounded" placeholder="Enter Message"
+                        aria-label="message_send" name="message_send" aria-describedby="search-addon" />
+                    <button type="submit" class="btn btn-dark">Send</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div>
+        <h3 style="text-align: center;">participants</h3>
+        <hr>
+        {% for i in participants %}
+        <div class="contaainer">
+            <h5><a href="/profile/{{i.id}}">@{{i}}</a></h5>
+        </div>
+        <hr>
+        {%endfor%}
+    </div>
+</div>
+{% endblock content %}

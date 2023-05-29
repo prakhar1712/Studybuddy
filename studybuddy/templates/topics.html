@@ -1,0 +1,11 @@
+<div>
+    <h4> Browse Topics </h4>
+        <div class="container" style="padding: 5px;">
+            <button class="btn btn-dark"><a href="{% url 'home' %}">All</a></button>
+        </div>
+        {%for i in topics %}
+        <div class="container" style="padding: 5px">
+            <button class="btn btn-dark"><a href="{% url 'home' %}?q={{i.name}}">{{i.name}}</a></button>
+        </div>
+        {%endfor%}
+</div>

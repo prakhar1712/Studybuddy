@@ -1,0 +1,13 @@
+<div>
+    <h4> Recent Messages </h4>
+        <hr>
+        {%for i in room_message%}
+        <div class="container" style=" background-color: #9090cf;border-radius: 13px; margin-top: 10px;">
+            <h4><a href = "/profile/{{i.user.id}}">@{{i.user}}</a></h4>
+            <h5> {{i.body}} </h5>
+            <h6><small>Replied to </small>{{i.room}}</h6>
+            <small>{{i.created|timesince}} ago</small>
+            <hr>
+        </div>
+        {%endfor%}
+</div>
